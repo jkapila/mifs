@@ -5,11 +5,12 @@ Author: Daniel Homola <dani.homola@gmail.com>
 License: BSD 3 clause
 """
 
+import bottleneck as bn
 import numpy as np
 from scipy import signal
-from sklearn.utils import check_X_y
 from sklearn.preprocessing import StandardScaler
-import bottleneck as bn
+from sklearn.utils import check_X_y
+
 import mi
 
 
@@ -33,7 +34,7 @@ class MutualInformationFeatureSelector(object):
         - 'MRMR' : Max-Relevance Min-Redundancy [3]
 
     k : int, default = 5
-        Sets the number of samples to use for the kernel density estimation 
+        Sets the number of samples to use for the kernel density estimation
         with the kNN method. Kraskov et al. recommend a small integer between
         3 and 10.
 
@@ -66,12 +67,12 @@ class MutualInformationFeatureSelector(object):
         The feature ranking of the selected features, with the first being
         the first feature selected with largest marginal MI with y, followed by
         the others with decreasing MI.
-    
+
     mi_ : array of shape n_features
         The JMIM of the selected features. Usually this a monotone decreasing
-        array of numbers converging to 0. One can use this to estimate the 
+        array of numbers converging to 0. One can use this to estimate the
         number of features to select. In fact this is what n_features='auto'
-        tries to do heuristically. 
+        tries to do heuristically.
 
     Examples
     --------
@@ -253,7 +254,7 @@ class MutualInformationFeatureSelector(object):
         # ----------------------------------------------------------------------
         # SAVE RESULTS
         # ----------------------------------------------------------------------
-        
+
         self.n_features_ = len(S)
         self.support_ = np.zeros(p, dtype=np.bool)
         self.support_[S] = 1
@@ -277,7 +278,7 @@ class MutualInformationFeatureSelector(object):
     def _check_params(self, X, y):
         # checking input data and scaling it if y is continuous
         X, y = check_X_y(X, y)
-        
+
         if not self.categorical:
             ss = StandardScaler()
             X = ss.fit_transform(X)
@@ -311,7 +312,7 @@ class MutualInformationFeatureSelector(object):
         """
         Helper function: removes ith element from F and adds it to S.
         """
-        
+
         S.append(i)
         F.remove(i)
         return S, F
