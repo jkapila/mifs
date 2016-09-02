@@ -4,6 +4,10 @@ Parallelized Mutual Information based Feature Selection module.
 
 [Related blog post] (http://danielhomola.com/2016/01/31/mifs-parallelized-mutual-information-based-feature-selection-module/)
 
+This is installable version of Implementatio of MIFS by Daniel Homola
+The source code has been forked from his git repository.
+You can find [it at] (https://github.com/danielhomola/mifs/)
+
 ## Dependencies ##
 
 * numpy
