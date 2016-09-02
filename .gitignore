@@ -1,3 +1,13 @@
 *.pyc
 *~
 dev/
+.idea
+.idea/*
+mifs.egg-info/*
+dist/jquery.typeahead.min.css
+dist/jquery.typeahead.min.js
+dist/mifs-0.1-py2.7.egg
+mifs.egg-info
+build/*
+build
+dist
